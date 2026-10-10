@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gramlink 360 | Smart Village Services & Citizen Portal</title>
+  <meta name="description" content="A prize-level B.Tech CSBS Smart Village e-Governance platform for rural India. Transparent public services, grievance tracking, and local administration.">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!-- WCAG AA Accessible Skip Navigation Link -->
+  <a href="#main-content" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
+
+  <!-- =========================================================================
+       TOP NOTICE & EMERGENCY HELPLINE STRIP
+       ========================================================================= -->
+  <div class="top-notice-strip">
+    <div class="container">
+      <div class="emergency-pills">
+        <span style="font-weight: 700; color: #fff;" data-i18n="footer_helpline">Emergency Helplines:</span>
+        <a href="tel:108" class="emergency-pill">🚑 Ambulance: 108</a>
+        <a href="tel:1091" class="emergency-pill">🛡️ Women Helpline: 1091</a>
+        <a href="tel:1551" class="emergency-pill">🌾 Kisan Call Centre: 1551</a>
+        <a href="tel:112" class="emergency-pill">👮 Police: 112</a>
+      </div>
+      <div class="lang-switch-wrapper">
+        <span style="font-size: 0.75rem; color: #a4c4b6;">भाषा / Language:</span>
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="mr">मराठी</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       STICKY NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Gramlink 360 Home">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Gramlink<span>360</span></h1>
+          <small>ग्रामपंचायत शिवराजपूर • Smart Village Portal</small>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="pages/village-dashboard.html" class="nav-link" data-i18n="nav_village_pulse">Village Pulse</a></li>
+          <li><a href="pages/services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+          <li><a href="pages/complaint-submit.html" class="nav-link" data-i18n="nav_submit">File Complaint</a></li>
+          <li><a href="pages/complaint-track.html" class="nav-link" data-i18n="nav_track">Track Status</a></li>
+          <li><a href="pages/announcements.html" class="nav-link" data-i18n="nav_announcements">Announcements</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions / Auth -->
+      <div class="header-actions">
+        <div class="nav-auth-slot">
+          <!-- Dynamically populated by js/main.js -->
+          <a href="pages/auth.html" class="btn btn-primary btn-sm" data-i18n="nav_login">Login / Register</a>
+        </div>
+        <button class="mobile-toggle-btn" aria-label="Open Mobile Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <h2 style="font-size: 1.25rem;">Gramlink<span>360</span></h2>
+          <small>Smart Village Services</small>
+        </div>
+        <button class="mobile-drawer-close btn btn-secondary btn-sm" aria-label="Close Menu">✕</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="mobile-nav-link active">🏠 Home</a></li>
+        <li><a href="pages/village-dashboard.html" class="mobile-nav-link">📊 Village Pulse & Metrics</a></li>
+        <li><a href="pages/services.html" class="mobile-nav-link">🏛️ Village Services Directory</a></li>
+        <li><a href="pages/complaint-submit.html" class="mobile-nav-link">✍️ File a Complaint</a></li>
+        <li><a href="pages/complaint-track.html" class="mobile-nav-link">🔍 Track Complaint Token</a></li>
+        <li><a href="pages/announcements.html" class="mobile-nav-link">📢 Announcements & Gram Sabha</a></li>
+        <li style="margin-top: 1rem; border-top: 1px solid var(--surface-subtle); padding-top: 1rem;">
+          <a href="pages/resident-dashboard.html" class="mobile-nav-link">👤 Resident Portal</a>
+        </li>
+        <li>
+          <a href="pages/admin-dashboard.html" class="mobile-nav-link">⚙️ Admin Control Room</a>
+        </li>
+      </ul>
+      <div style="margin-top: auto; padding-top: 1.5rem;">
+        <a href="pages/auth.html" class="btn btn-primary" style="width: 100%;">Sign In / Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main id="main-content">
+
+  <!-- =========================================================================
+       HERO SECTION
+       ========================================================================= -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <!-- Left Content Column -->
+      <div class="hero-content">
+        <div class="hero-badge anim-fade-up">
+          <span class="pulse-dot"></span>
+          <span data-i18n="hero_badge">Official Digital Panchayat Portal</span>
+          <span class="badge badge-demo">Demo Model</span>
+        </div>
+
+        <h1 class="hero-title anim-fade-up">
+          <span data-i18n="hero_title_1">One Village. Every Service.</span><br>
+          <span class="highlight" data-i18n="hero_title_2">One Digital Future.</span>
+        </h1>
+
+        <p class="hero-desc anim-fade-up" data-i18n="hero_desc">
+          Empowering every resident of Gram Panchayat Shivrajpur with instant access to public utilities, fast grievance resolution with 48-hour SLAs, and direct community announcements.
+        </p>
+
+        <div class="hero-actions anim-fade-up">
+          <a href="pages/services.html" class="btn btn-primary btn-lg" data-i18n="hero_btn_services">
+            Explore Services
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="pages/complaint-track.html" class="btn btn-secondary btn-lg" data-i18n="hero_btn_track">
+            Track Complaint
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </a>
+        </div>
+
+        <!-- Trust & Impact Metrics -->
+        <div class="hero-trust-metrics anim-fade-up">
+          <div class="trust-item">
+            <h4>94.2%</h4>
+            <p data-i18n="hero_stat_resolved">Resolved Rate</p>
+          </div>
+          <div class="trust-item">
+            <h4>&lt; 36 hrs</h4>
+            <p data-i18n="hero_stat_sla">Avg SLA Response</p>
+          </div>
+          <div class="trust-item">
+            <h4>2,840+</h4>
+            <p data-i18n="hero_stat_families">Registered Families</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual Composition Column -->
+      <div class="hero-visual-card anim-fade-up">
+        <div class="hero-main-card">
+          <!-- Card Header -->
+          <div class="card-header-village">
+            <div class="village-meta">
+              <div class="village-avatar">🌾</div>
+              <div>
+                <h4 style="font-size: 1.05rem; margin-bottom: 0.1rem;">Gram Panchayat Shivrajpur</h4>
+                <p style="font-size: 0.785rem; color: var(--text-subtle);">Taluka: Baramati • Dist: Pune</p>
+              </div>
+            </div>
+            <span class="badge badge-resolved">● Live Operational</span>
+          </div>
+
+          <!-- Village Image with Overlay -->
+          <div class="hero-visual-image-box">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Rural Indian Community and Greenery" loading="eager">
+            <div class="hero-image-overlay">
+              <span>Smart Village Initiative • Digital India Mission</span>
+            </div>
+          </div>
+
+          <!-- Live Sample Ticket Preview -->
+          <div class="floating-ticket-preview">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background: var(--status-progress-bg); color: var(--status-progress-text); display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                💧
+              </div>
+              <div>
+                <div style="font-size: 0.825rem; font-weight: 700; color: var(--primary-900);">Handpump Line Repair</div>
+                <div style="font-size: 0.725rem; color: var(--text-subtle);">Token: <strong>GL-2026-1042</strong> • Ward 2</div>
+              </div>
+            </div>
+            <span class="badge badge-progress">In Progress</span>
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="floating-pill-badge top-right anim-float">
+            <span style="font-size: 1.25rem;">⏱️</span>
+            <div>
+              <strong style="font-size: 0.85rem; display: block; color: var(--primary-900);">48-Hour SLA</strong>
+              <small style="font-size: 0.725rem; color: var(--text-subtle);">Guaranteed Redressal</small>
+            </div>
+          </div>
+
+          <div class="floating-pill-badge bottom-left anim-float-slow">
+            <span style="font-size: 1.25rem;">📜</span>
+            <div>
+              <strong style="font-size: 0.85rem; display: block; color: var(--primary-900);">Social Audit</strong>
+              <small style="font-size: 0.725rem; color: var(--text-subtle);">100% Public Transparency</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       QUICK TRACK TOKEN WIDGET (ELEVATED BAR)
+       ========================================================================= -->
+  <section class="quick-track-section">
+    <div class="container">
+      <div class="track-widget-box reveal">
+        <div class="track-widget-info">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+            <span style="font-size: 1.25rem;">🔍</span>
+            <h3 data-i18n="track_widget_title">Track Any Village Complaint Instantly</h3>
+          </div>
+          <p style="font-size: 0.885rem; margin: 0;" data-i18n="track_widget_desc">
+            Enter your unique 10-character grievance reference token (e.g., GL-2026-1042)
+          </p>
+        </div>
+
+        <form class="quick-track-form track-widget-form">
+          <input type="text" class="input-track-token" placeholder="Enter Token (e.g. GL-2026-1042)" data-i18n-placeholder="track_input_placeholder" required>
+          <button type="submit" class="btn btn-gold" data-i18n="track_btn">
+            Check Status
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FEATURED SERVICES SECTION
+       ========================================================================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="services_tag">Village Directory</span>
+        <h2 data-i18n="services_title">Essential Public & Citizen Services</h2>
+        <p class="text-lead" data-i18n="services_desc">
+          Direct access to local departments, welfare desks, and community infrastructure.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service Card 1 -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon-box">🩺</div>
+          <h3>Primary Health & OPD</h3>
+          <p>Free primary health consultations, maternal care, routine infant immunizations, and essential medicine stock check.</p>
+          <div class="service-footer">
+            <span>Daily 8AM – 2PM</span>
+            <a href="pages/services.html" class="btn btn-secondary btn-sm">Details →</a>
+          </div>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon-box">🌾</div>
+          <h3>Krishi Seva & Soil Health</h3>
+          <p>Free soil testing lab access, certified hybrid seed quotas, organic fertilizer subsidies, and agricultural machinery rental desk.</p>
+          <div class="service-footer">
+            <span>Kisan Bhawan • Ward 4</span>
+            <a href="pages/services.html" class="btn btn-secondary btn-sm">Details →</a>
+          </div>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon-box">💧</div>
+          <h3>Drinking Water Supply</h3>
+          <p>Overhead reservoir timing alerts, community water purifier filter updates, and rapid handpump breakdown repair reporting.</p>
+          <div class="service-footer">
+            <span>24/7 Water Desk</span>
+            <a href="pages/services.html" class="btn btn-secondary btn-sm">Details →</a>
+          </div>
+        </div>
+
+        <!-- Service Card 4 -->
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-icon-box">⚡</div>
+          <h3>Street Lighting & Grid</h3>
+          <p>Solar street lamp repair requests, agricultural pump line voltage reporting, and lineman assistance for transformer issues.</p>
+          <div class="service-footer">
+            <span>MSEDCL Sub-Station</span>
+            <a href="pages/services.html" class="btn btn-secondary btn-sm">Details →</a>
+          </div>
+        </div>
+
+        <!-- Service Card 5 -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon-box">📜</div>
+          <h3>Panchayat Certificates</h3>
+          <p>Online application and verification for Birth, Death, Residence, Below Poverty Line (BPL), and NOC certificates.</p>
+          <div class="service-footer">
+            <span>Gram Sevak Desk</span>
+            <a href="pages/services.html" class="btn btn-secondary btn-sm">Details →</a>
+          </div>
+        </div>
+
+        <!-- Service Card 6 -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon-box">🍞</div>
+          <h3>Fair Price Ration (PDS)</h3>
+          <p>Monthly subsidized grain entitlement quota tracker, shop opening schedules, and grievance desk for ration distribution.</p>
+          <div class="service-footer">
+            <span>1st–20th of Month</span>
+            <a href="pages/services.html" class="btn btn-secondary btn-sm">Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;" class="reveal">
+        <a href="pages/services.html" class="btn btn-primary btn-lg">
+          Browse All 14 Village Services & Contacts →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       HOW IT WORKS (CITIZEN GRIEVANCE JOURNEY)
+       ========================================================================= -->
+  <section class="section" style="background: var(--surface-subtle);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag gold">Accountable Governance</span>
+        <h2>How Gramlink 360 Solves Your Village Issues</h2>
+        <p class="text-lead">
+          From reporting to photo-verified resolution—every step is tracked transparently with zero intermediaries.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <!-- Step 1 -->
+        <div class="pulse-card reveal reveal-delay-1" style="border-top: 4px solid var(--primary-600);">
+          <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-100); margin-bottom: 0.5rem;">01</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Submit in 60 Seconds</h3>
+          <p style="font-size: 0.925rem;">Pick your department (Water, Electricity, Sanitation), select your ward, write the issue or snap a photo. No paperwork required.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="pulse-card reveal reveal-delay-2" style="border-top: 4px solid var(--gold-500);">
+          <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold-100); margin-bottom: 0.5rem;">02</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Instant Token & SLA Timer</h3>
+          <p style="font-size: 0.925rem;">Receive a unique 10-digit tracking token (e.g. <code>GL-2026-XXXX</code>). The system initiates an official 48-hour SLA countdown timer.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="pulse-card reveal reveal-delay-3" style="border-top: 4px solid var(--primary-500);">
+          <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-100); margin-bottom: 0.5rem;">03</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Officer Action & Photo Proof</h3>
+          <p style="font-size: 0.925rem;">The assigned field officer (Gram Sevak or Lineman) repairs the issue on ground and uploads resolution photo proof to the public portal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       RECENT ANNOUNCEMENTS SECTION
+       ========================================================================= -->
+  <section class="section">
+    <div class="container">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;" class="reveal">
+        <div>
+          <span class="section-tag" data-i18n="nav_announcements">Announcements</span>
+          <h2>Latest Gram Sabha & Village Notices</h2>
+        </div>
+        <a href="pages/announcements.html" class="btn btn-secondary">View All Notices →</a>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;" id="homeAnnouncementsContainer">
+        <!-- Rendered dynamically by script or fallback -->
+        <div class="announcement-card reveal reveal-delay-1">
+          <div class="announcement-date-badge">
+            <span class="day">15</span>
+            <span class="month">Oct</span>
+          </div>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+              <span class="badge badge-urgent">Urgent Notice</span>
+              <span style="font-size: 0.8rem; color: var(--text-subtle);">Gram Sabha • 10:00 AM</span>
+            </div>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.35rem;">Annual Pre-Diwali Gram Sabha Budget Meeting</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">Discussion of Ward 1 to 5 development budgets, approval of new PM Awas Yojana beneficiary lists, and water conservation audit.</p>
+            <span style="font-size: 0.8rem; font-weight: 600; color: var(--primary-700);">Published by: Sarpanch Sunita Deshmukh</span>
+          </div>
+        </div>
+
+        <div class="announcement-card reveal reveal-delay-2">
+          <div class="announcement-date-badge">
+            <span class="day">12</span>
+            <span class="month">Oct</span>
+          </div>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem;">
+              <span class="badge badge-progress">Agriculture</span>
+              <span style="font-size: 0.8rem; color: var(--text-subtle);">Kisan Kendra • 09:00 AM</span>
+            </div>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.35rem;">Free Rabi Season High-Yield Seed Distribution</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">Government subsidized Gram and Wheat seeds (Phule Vikram & Samadhan) will be distributed to small & marginal farmers. Bring 7/12 extract.</p>
+            <span style="font-size: 0.8rem; font-weight: 600; color: var(--primary-700);">Published by: Agriculture Assistant Shinde</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       HIGH-IMPACT CALL TO ACTION
+       ========================================================================= -->
+  <section class="section" style="padding: 0;">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, var(--primary-900), var(--primary-700)); border-radius: var(--radius-xl); padding: 3.5rem 3rem; color: #fff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;" class="reveal">
+        <div style="max-width: 620px;">
+          <span class="badge" style="background: rgba(255,255,255,0.15); color: #fff; margin-bottom: 1rem;">Citizen First e-Governance</span>
+          <h2 style="color: #fff; margin-bottom: 1rem;">Have an unresolved issue in your ward?</h2>
+          <p style="color: #cde2d8; font-size: 1.05rem; margin: 0;">
+            Report faulty streetlights, broken water taps, drain blockage, or road damage directly to the Panchayat executive desk with real-time tracking.
+          </p>
+        </div>
+        <div>
+          <a href="pages/complaint-submit.html" class="btn btn-gold btn-lg">
+            ✍️ File a Complaint Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 1.25rem;">
+            <div class="brand-icon-box" style="background: rgba(255,255,255,0.15);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            </div>
+            <div class="brand-text">
+              <h1 style="color: #fff; font-size: 1.25rem;">Gramlink<span style="color: var(--gold-400);">360</span></h1>
+              <small style="color: #9abfb0;">Smart Village Services</small>
+            </div>
+          </div>
+          <p style="font-size: 0.875rem; color: #9abfb0; line-height: 1.7; margin-bottom: 1rem;" data-i18n="footer_tagline">
+            Empowering rural India through transparent, accountable, and SLA-driven e-governance.
+          </p>
+          <div style="font-size: 0.8rem; color: #7da595;">
+            📍 Gram Panchayat Shivrajpur, Taluka Baramati, Dist. Pune, Maharashtra – 413102
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/services.html">Village Services Directory</a></li>
+            <li><a href="pages/complaint-submit.html">File Grievance</a></li>
+            <li><a href="pages/complaint-track.html">Track Complaint Status</a></li>
+            <li><a href="pages/announcements.html">Gram Sabha Announcements</a></li>
+            <li><a href="pages/village-dashboard.html">Village Pulse & Open Data</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Portal Roles -->
+        <div class="footer-col">
+          <h4>Portal Access</h4>
+          <ul class="footer-links">
+            <li><a href="pages/resident-dashboard.html">Resident Portal (ग्रामस्थ)</a></li>
+            <li><a href="pages/admin-dashboard.html">Sarpanch & Admin Control Room</a></li>
+            <li><a href="pages/auth.html">Official Staff Login</a></li>
+            <li><a href="pages/complaint-track.html?token=GL-2026-1042">Sample Track (GL-2026-1042)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project Info / Academic Context -->
+        <div class="footer-col">
+          <h4>Academic Mini Project</h4>
+          <p style="font-size: 0.85rem; color: #9abfb0; line-height: 1.6; margin-bottom: 1rem;">
+            Developed for <strong>B.Tech Computer Science & Business Systems (CSBS)</strong>. Focuses on Business Process Re-engineering (BPR), SLA management, and open rural data governance.
+          </p>
+          <span class="badge badge-demo" data-i18n="footer_demo_notice">
+            Academic CSBS Mini Project - Demonstration UI
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Gramlink 360. All rights reserved. Built with HTML5, CSS3 & Vanilla JavaScript.
+        </div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="color: #9abfb0;">Privacy Policy</a>
+          <a href="#" style="color: #9abfb0;">Citizen Charter</a>
+          <a href="#" style="color: #9abfb0;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
