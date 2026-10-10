@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin & Sarpanch Control Room | Gramlink 360</title>
+  <meta name="description" content="Panchayat administration desk for grievance triage, officer assignment, announcement broadcasts, and SLA performance auditing.">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body style="background: #f7f9f8;">
+
+  <a href="#main-content" class="skip-link" data-i18n="a11y_skip_to_content">Skip to main content</a>
+
+  <!-- Top Emergency Strip -->
+  <div class="top-notice-strip">
+    <div class="container">
+      <div class="emergency-pills">
+        <span style="font-weight: 700; color: #fff;">Panchayat Executive Desk:</span>
+        <span class="emergency-pill">🏢 Gram Panchayat Shivrajpur</span>
+        <span class="emergency-pill">🏛️ Office Hours: 09:30 AM – 05:30 PM</span>
+      </div>
+      <div class="lang-switch-wrapper">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="mr">मराठी</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo" aria-label="Gramlink 360 Home">
+        <div class="brand-icon-box" style="background: linear-gradient(135deg, var(--gold-600), var(--gold-500));">
+          ⚙️
+        </div>
+        <div class="brand-text">
+          <h1>Gramlink<span>Admin</span></h1>
+          <small>ग्रामपंचायत प्रशासन कक्ष • Control Room</small>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="village-dashboard.html" class="nav-link" data-i18n="nav_village_pulse">Village Pulse</a></li>
+          <li><a href="services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+          <li><a href="complaint-track.html" class="nav-link" data-i18n="nav_track">Track Status</a></li>
+          <li><a href="admin-dashboard.html" class="nav-link active" data-i18n="nav_admin_dash">Admin Desk</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-800);" id="adminHeaderName">
+            Sarpanch Sunita Deshmukh
+          </span>
+          <button id="adminLogoutBtn" class="btn btn-secondary btn-sm" title="Sign out" aria-label="Sign out of administrator session">
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Banner -->
+  <section style="background: #ffffff; padding: 2.5rem 0 2rem 0; border-bottom: 1px solid var(--surface-border);">
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.35rem;">
+            <span class="badge" style="background: var(--gold-100); color: var(--gold-700);">Official Panchayat Administration</span>
+            <span class="badge badge-demo">Database Triage Model</span>
+          </div>
+          <h1 style="font-size: 1.85rem; margin-bottom: 0.25rem;" data-i18n="admin_control_title">Grievance Triage & Operational Desk</h1>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;" data-i18n="admin_control_desc">
+            Review incoming ward tickets, assign field officers, monitor 48-hour SLAs, and broadcast village notices.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button id="openAnnouncementModalBtn" class="btn btn-gold" data-i18n="btn_broadcast_notice">
+            📢 Broadcast Notice
+          </button>
+          <button id="exportCsvBtn" class="btn btn-secondary" data-i18n="btn_export_csv">
+            📥 Export Report (CSV)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content" class="section">
+    <div class="container">
+      
+      <!-- CSBS Security & Architecture Note Box -->
+      <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+          <span style="font-size: 1.5rem;">🛡️</span>
+          <div>
+            <strong style="color: #1e40af; font-size: 0.95rem; display: block; margin-bottom: 0.25rem;">
+              B.Tech CSBS Security Principle: Zero Frontend-Only Trust
+            </strong>
+            <p style="color: #1e3a8a; font-size: 0.85rem; margin: 0; line-height: 1.6;">
+              Client-side UI role hiding is never trusted as a security barrier. Supabase <strong>Row Level Security (RLS)</strong> policies strictly evaluate the cryptographically signed JWT token (<code>auth.uid()</code> matched against <code>profiles.role = 'administrator'</code>) directly in PostgreSQL before allowing any status update or notice broadcast.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin KPI Counters -->
+      <div class="pulse-stats-grid" style="margin-bottom: 2.5rem;">
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label" data-i18n="stat_total_grievances">Total Received</span>
+            <span class="pulse-icon">📋</span>
+          </div>
+          <div class="pulse-number" id="adminTotalGrievances">0</div>
+          <p class="pulse-subtext">All submitted tickets</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label">Pending Review</span>
+            <span class="pulse-icon">⚠️</span>
+          </div>
+          <div class="pulse-number" style="color: var(--status-urgent-text);" id="adminPendingCount">0</div>
+          <p class="pulse-subtext">Needs officer dispatch</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label">In Progress (Field)</span>
+            <span class="pulse-icon">⏳</span>
+          </div>
+          <div class="pulse-number" style="color: var(--status-progress-text);" id="adminProgressCount">0</div>
+          <p class="pulse-subtext">Under active repair</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label" data-i18n="stat_resolved">Resolved & Closed</span>
+            <span class="pulse-icon">✅</span>
+          </div>
+          <div class="pulse-number" style="color: #16a34a;" id="adminResolvedCount">0</div>
+          <p class="pulse-subtext">SLA compliance verified</p>
+        </div>
+      </div>
+
+      <!-- Real Data Chart: Grievance Department Distribution in Admin Desk -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3 style="font-size: 1.15rem; color: var(--primary-900);">📊 Department Distribution & Triage Overview</h3>
+          <span class="badge badge-demo">Calculated from Real Records</span>
+        </div>
+        <div id="adminChartContainer" class="svg-chart-wrapper">
+          <div class="skeleton-loader" style="height: 90px;"></div>
+        </div>
+      </div>
+
+      <!-- Grievance Triage Section with Search & Combined Filters -->
+      <div style="margin-bottom: 3rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+          <div>
+            <h3>Active Village Grievances Triage Table</h3>
+            <p style="font-size: 0.85rem; margin: 0; color: var(--text-muted);">Change statuses directly below to update PostgreSQL database records under RLS.</p>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="filter-bar-grid">
+          <div style="flex: 1; min-width: 240px;">
+            <input type="text" id="adminSearchInput" class="form-control" placeholder="Search by token, title, applicant, ward..." data-i18n-placeholder="search_complaints_placeholder" style="font-size: 0.875rem;">
+          </div>
+          <div>
+            <select id="adminStatusFilter" class="form-control" style="font-size: 0.85rem; padding: 0.55rem 0.75rem;">
+              <option value="all" data-i18n="filter_all_status">All Statuses</option>
+              <option value="Pending" data-i18n="filter_status_pending">⏳ Pending Only</option>
+              <option value="In Progress" data-i18n="filter_status_progress">🔧 In Progress Only</option>
+              <option value="Resolved" data-i18n="filter_status_resolved">✅ Resolved Only</option>
+            </select>
+          </div>
+          <div>
+            <select id="adminCategoryFilter" class="form-control" style="font-size: 0.85rem; padding: 0.55rem 0.75rem;">
+              <option value="all" data-i18n="filter_all_categories">All Categories</option>
+              <option value="utilities" data-i18n="filter_cat_water">Drinking Water</option>
+              <option value="electricity" data-i18n="filter_cat_power">Electricity</option>
+              <option value="roads" data-i18n="filter_cat_roads">Roads & Drainage</option>
+              <option value="sanitation" data-i18n="filter_cat_sanitation">Sanitation</option>
+              <option value="health" data-i18n="filter_cat_health">Health PHC</option>
+              <option value="ration" data-i18n="filter_cat_ration">Ration PDS</option>
+              <option value="general" data-i18n="filter_cat_general">General</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Desktop Table View -->
+        <div class="desktop-table-view data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Subject & Category</th>
+                <th>Ward Location</th>
+                <th>Applicant</th>
+                <th>Priority</th>
+                <th>Assigned Officer</th>
+                <th>Status Action</th>
+                <th>Inspect</th>
+              </tr>
+            </thead>
+            <tbody id="adminComplaintsTableBody">
+              <!-- Injected by js/admin.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Card View (Optimized for Small Screens) -->
+        <div class="mobile-card-list" id="adminComplaintsCardList">
+          <!-- Injected by js/admin.js -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal: Publish Announcement -->
+  <div class="modal-overlay" id="broadcastModal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="badge badge-demo">Panchayat Bulletin</span>
+          <h3 style="font-size: 1.35rem; margin-top: 0.35rem;">Broadcast New Notice</h3>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="closeBroadcastModalBtn">✕</button>
+      </div>
+
+      <form id="broadcastForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="annTitle" class="form-label">Notice Headline / Title <span class="required">*</span></label>
+            <input type="text" id="annTitle" class="form-control" placeholder="e.g. Canal Water Release Schedule for Ward 4" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label for="annCategory" class="form-label">Category</label>
+              <select id="annCategory" class="form-control">
+                <option value="Gram Sabha">Gram Sabha</option>
+                <option value="Agriculture">Agriculture & Kisan</option>
+                <option value="Health">Public Health</option>
+                <option value="General">General Notice</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="annVenue" class="form-label">Venue / Location</label>
+              <input type="text" id="annVenue" class="form-control" placeholder="Gram Panchayat Hall" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="annDesc" class="form-label">Detailed Notice Content <span class="required">*</span></label>
+            <textarea id="annDesc" class="form-control" rows="3" placeholder="Write the announcement details clearly for residents..." required></textarea>
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0;">
+            <input type="checkbox" id="annUrgent" style="width: 18px; height: 18px; accent-color: var(--primary-700);">
+            <label for="annUrgent" style="font-size: 0.9rem; font-weight: 600; margin: 0; cursor: pointer;">
+              Mark as Urgent Announcement (High Visibility Alert)
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" id="closeBroadcastModalBtn2">Cancel</button>
+          <button type="submit" class="btn btn-gold btn-sm">🚀 Publish to Village Portal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Gramlink 360 • Smart Village Services Platform</div>
+        <div>Gram Panchayat Shivrajpur • Administrative Desk</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

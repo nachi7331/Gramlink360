@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Village Pulse & Transparency | Gramlink 360</title>
+  <meta name="description" content="Public open-data dashboard and live metrics for Gram Panchayat Shivrajpur. Track SLA compliance, ward performance, and public utilities.">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link" data-i18n="a11y_skip_to_content">Skip to main content</a>
+
+  <!-- Top Emergency Strip -->
+  <div class="top-notice-strip">
+    <div class="container">
+      <div class="emergency-pills">
+        <span style="font-weight: 700; color: #fff;">Emergency Helplines:</span>
+        <a href="tel:108" class="emergency-pill">🚑 108</a>
+        <a href="tel:1091" class="emergency-pill">🛡️ 1091</a>
+        <a href="tel:1551" class="emergency-pill">🌾 1551</a>
+        <a href="tel:112" class="emergency-pill">👮 112</a>
+      </div>
+      <div class="lang-switch-wrapper">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="mr">मराठी</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Gramlink<span>360</span></h1>
+          <small>ग्रामपंचायत शिवराजपूर • Smart Village Portal</small>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="village-dashboard.html" class="nav-link active" data-i18n="nav_village_pulse">Village Pulse</a></li>
+          <li><a href="services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+          <li><a href="complaint-submit.html" class="nav-link" data-i18n="nav_submit">File Complaint</a></li>
+          <li><a href="complaint-track.html" class="nav-link" data-i18n="nav_track">Track Status</a></li>
+          <li><a href="announcements.html" class="nav-link" data-i18n="nav_announcements">Announcements</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="nav-auth-slot">
+          <a href="auth.html" class="btn btn-primary btn-sm" data-i18n="nav_login">Login / Register</a>
+        </div>
+        <button class="mobile-toggle-btn" aria-label="Open Mobile Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <h2 style="font-size: 1.25rem;">Gramlink<span>360</span></h2>
+          <small>Smart Village Services</small>
+        </div>
+        <button class="mobile-drawer-close btn btn-secondary btn-sm">✕</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="../index.html" class="mobile-nav-link">🏠 Home</a></li>
+        <li><a href="village-dashboard.html" class="mobile-nav-link active">📊 Village Pulse & Metrics</a></li>
+        <li><a href="services.html" class="mobile-nav-link">🏛️ Village Services</a></li>
+        <li><a href="complaint-submit.html" class="mobile-nav-link">✍️ File Complaint</a></li>
+        <li><a href="complaint-track.html" class="mobile-nav-link">🔍 Track Status</a></li>
+        <li><a href="announcements.html" class="mobile-nav-link">📢 Announcements</a></li>
+        <li style="margin-top: 1rem; border-top: 1px solid var(--surface-subtle); padding-top: 1rem;">
+          <a href="resident-dashboard.html" class="mobile-nav-link">👤 Resident Portal</a>
+        </li>
+        <li><a href="admin-dashboard.html" class="mobile-nav-link">⚙️ Admin Control Room</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <section style="background: radial-gradient(circle at 80% 20%, rgba(216, 243, 229, 0.4) 0%, transparent 50%), var(--surface-ground); padding: 3.5rem 0 2rem 0; border-bottom: 1px solid var(--surface-border);">
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="section-tag" data-i18n="nav_village_pulse">Public Transparency</span>
+            <span class="badge badge-demo">Database Analytics & Academic Demo</span>
+          </div>
+          <h1 data-i18n="pulse_title">Village Pulse & Social Audit</h1>
+          <p class="text-lead" style="margin: 0;" data-i18n="pulse_desc">
+            Calculated dynamically from real database grievance records and simulated Panchayat utility schedules.
+          </p>
+        </div>
+        <div>
+          <a href="complaint-submit.html" class="btn btn-primary">✍️ Report Ward Issue</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content" class="section">
+    <div class="container">
+
+      <!-- Section 1: KPI Stats Grid (Real Database Calculations) -->
+      <div class="pulse-stats-grid reveal" style="margin-bottom: 3rem;">
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label" data-i18n="stat_sla_compliance">SLA Compliance</span>
+            <span class="pulse-icon">⚡</span>
+          </div>
+          <div class="pulse-number" style="color: var(--primary-600);" id="slaComplianceRate">--%</div>
+          <p class="pulse-subtext" data-i18n="stat_sla_desc">Issues closed within 48h deadline</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label" data-i18n="stat_total_grievances">Total Received</span>
+            <span class="pulse-icon">📋</span>
+          </div>
+          <div class="pulse-number" id="totalGrievancesCount">--</div>
+          <p class="pulse-subtext" data-i18n="stat_total_desc">Tickets registered in portal</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label" data-i18n="stat_resolved">Resolved & Closed</span>
+            <span class="pulse-icon">✅</span>
+          </div>
+          <div class="pulse-number" style="color: #16a34a;" id="resolvedGrievancesCount">--</div>
+          <p class="pulse-subtext" data-i18n="stat_resolved_desc">Inspected and closed by officers</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label" data-i18n="stat_avg_time">Avg. Resolution Time</span>
+            <span class="pulse-icon">⏱️</span>
+          </div>
+          <div class="pulse-number" style="color: var(--gold-600);" id="avgResolutionTime">-- hrs</div>
+          <p class="pulse-subtext" data-i18n="stat_avg_time_desc">Benchmark SLA target: 48.0 hrs</p>
+        </div>
+      </div>
+
+      <!-- Real Data SVG Charts Section (Generated from real records) -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3.5rem;" class="reveal form-row-responsive">
+        <!-- Chart 1: Status Breakdown -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3 style="font-size: 1.15rem; color: var(--primary-900);" data-i18n="chart_status_breakdown">📊 Grievance Status Breakdown</h3>
+            <span class="badge badge-demo">Real Data</span>
+          </div>
+          <div id="statusChartContainer" class="svg-chart-wrapper">
+            <div class="skeleton-loader" style="height: 100px;"></div>
+          </div>
+        </div>
+
+        <!-- Chart 2: Category Distribution -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3 style="font-size: 1.15rem; color: var(--primary-900);" data-i18n="chart_category_distribution">📈 Department Distribution</h3>
+            <span class="badge badge-demo">Real Data</span>
+          </div>
+          <div id="deptChartContainer" class="svg-chart-wrapper">
+            <div class="skeleton-loader" style="height: 100px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Utilities Status & Next Assembly -->
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; margin-bottom: 3.5rem;" class="reveal form-row-responsive">
+        <!-- Public Utilities Operational Schedule (Transparent Demo Model) -->
+        <div class="pulse-card" style="padding: 2rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3>🚰 Village Utilities Operational Status</h3>
+            <span class="badge" style="background: var(--surface-subtle); color: var(--text-muted);">Demonstration Schedule Model</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <!-- Utility 1 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--surface-subtle); border-radius: var(--radius-md);">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.5rem;">💧</span>
+                <div>
+                  <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Jal Jeevan Piped Drinking Water</h4>
+                  <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Morning Supply Schedule: 06:00 AM – 08:30 AM</p>
+                </div>
+              </div>
+              <span class="badge badge-resolved">Operational</span>
+            </div>
+
+            <!-- Utility 2 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--surface-subtle); border-radius: var(--radius-md);">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.5rem;">⚡</span>
+                <div>
+                  <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">3-Phase Agricultural Power Feeder</h4>
+                  <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Standard Day Slot: 08:00 AM – 04:00 PM</p>
+                </div>
+              </div>
+              <span class="badge badge-resolved">Active Schedule</span>
+            </div>
+
+            <!-- Utility 3 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--surface-subtle); border-radius: var(--radius-md);">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 1.5rem;">💡</span>
+                <div>
+                  <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Solar Streetlight Network</h4>
+                  <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Automated Dusk-to-Dawn Timer Circuit</p>
+                </div>
+              </div>
+              <span class="badge badge-progress">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Gram Sabha Notice Box -->
+        <div class="pulse-card" style="padding: 2rem; background: linear-gradient(135deg, #fefbf4, #f8f3e6); border: 1.5px solid var(--gold-400);">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <span style="font-size: 1.5rem;">🏛️</span>
+            <span class="section-tag gold" style="margin: 0;">Democratic Assembly</span>
+          </div>
+          <h3 style="font-size: 1.35rem; margin-bottom: 0.75rem;">Annual Pre-Diwali Gram Sabha</h3>
+          <div style="font-size: 0.95rem; color: var(--primary-900); font-weight: 700; margin-bottom: 0.75rem;">
+            📅 15 October 2026 • 10:00 AM
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; color: var(--text-muted);">
+            Agenda: Review of Ward 1 to 5 infrastructure spending, public audit of Jal Jeevan handpumps, and PM Awas Yojana beneficiary lists.
+          </p>
+          <div style="background: #ffffff; padding: 0.85rem 1rem; border-radius: var(--radius-md); font-size: 0.825rem; border: 1px solid var(--surface-border);">
+            <strong>Quorum Notice:</strong> Adult voter participation and women reservation quota monitored.
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Ward-Wise Performance Table (Calculated dynamically) -->
+      <div class="reveal">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <h3 data-i18n="chart_ward_performance">🏘️ Ward-Wise Performance & Resolution Ledger</h3>
+            <p style="font-size: 0.875rem; margin: 0; color: var(--text-muted);">Aggregated dynamically from grievances registered in each ward.</p>
+          </div>
+          <span class="badge badge-demo">Dynamic Database Aggregation</span>
+        </div>
+
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Ward No. & Locality</th>
+                <th>Ward Member (Panch)</th>
+                <th>Complaints Lodged</th>
+                <th>Resolved</th>
+                <th>Active / In Progress</th>
+                <th>SLA Compliance</th>
+              </tr>
+            </thead>
+            <tbody id="wardPerformanceTableBody">
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 2rem;">
+                  <div class="skeleton-loader" style="height: 24px; width: 60%; margin: 0 auto;"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Gramlink 360 • Smart Village Services Platform</div>
+        <div>B.Tech CSBS Mini Project • Demo Mode</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/village-dashboard.js"></script>
+</body>
+</html>

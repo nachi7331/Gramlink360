@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Services Directory | Gramlink 360</title>
+  <meta name="description" content="Browse and access essential village public services in Gram Panchayat Shivrajpur. Contact officers, check office hours, and understand requirements.">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <!-- WCAG AA Accessible Skip Navigation Link -->
+  <a href="#main-content" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
+
+  <!-- Top Emergency Strip -->
+  <div class="top-notice-strip">
+    <div class="container">
+      <div class="emergency-pills">
+        <span style="font-weight: 700; color: #fff;">Emergency Helplines:</span>
+        <a href="tel:108" class="emergency-pill">🚑 108</a>
+        <a href="tel:1091" class="emergency-pill">🛡️ 1091</a>
+        <a href="tel:1551" class="emergency-pill">🌾 1551</a>
+        <a href="tel:112" class="emergency-pill">👮 112</a>
+      </div>
+      <div class="lang-switch-wrapper">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="mr">मराठी</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Gramlink<span>360</span></h1>
+          <small>ग्रामपंचायत शिवराजपूर • Smart Village Portal</small>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="village-dashboard.html" class="nav-link" data-i18n="nav_village_pulse">Village Pulse</a></li>
+          <li><a href="services.html" class="nav-link active" data-i18n="nav_services">Services</a></li>
+          <li><a href="complaint-submit.html" class="nav-link" data-i18n="nav_submit">File Complaint</a></li>
+          <li><a href="complaint-track.html" class="nav-link" data-i18n="nav_track">Track Status</a></li>
+          <li><a href="announcements.html" class="nav-link" data-i18n="nav_announcements">Announcements</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="nav-auth-slot">
+          <a href="auth.html" class="btn btn-primary btn-sm" data-i18n="nav_login">Login / Register</a>
+        </div>
+        <button class="mobile-toggle-btn" aria-label="Open Mobile Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <h2 style="font-size: 1.25rem;">Gramlink<span>360</span></h2>
+          <small>Smart Village Services</small>
+        </div>
+        <button class="mobile-drawer-close btn btn-secondary btn-sm">✕</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="../index.html" class="mobile-nav-link">🏠 Home</a></li>
+        <li><a href="village-dashboard.html" class="mobile-nav-link">📊 Village Pulse</a></li>
+        <li><a href="services.html" class="mobile-nav-link active">🏛️ Village Services</a></li>
+        <li><a href="complaint-submit.html" class="mobile-nav-link">✍️ File Complaint</a></li>
+        <li><a href="complaint-track.html" class="mobile-nav-link">🔍 Track Status</a></li>
+        <li><a href="announcements.html" class="mobile-nav-link">📢 Announcements</a></li>
+        <li style="margin-top: 1rem; border-top: 1px solid var(--surface-subtle); padding-top: 1rem;">
+          <a href="resident-dashboard.html" class="mobile-nav-link">👤 Resident Portal</a>
+        </li>
+        <li><a href="admin-dashboard.html" class="mobile-nav-link">⚙️ Admin Control Room</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <section style="background: var(--surface-ground); padding: 3.5rem 0 2rem 0; border-bottom: 1px solid var(--surface-border);">
+    <div class="container">
+      <span class="section-tag" data-i18n="services_tag">Village Directory</span>
+      <h1 data-i18n="services_title">Essential Public & Citizen Services</h1>
+      <p class="text-lead" style="margin-bottom: 2rem;" data-i18n="services_desc">
+        Direct access to local departments, welfare desks, and community infrastructure.
+      </p>
+
+      <!-- Search & Category Filters -->
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div style="position: relative; max-width: 680px;">
+          <input type="text" id="serviceSearchInput" class="form-control" style="padding-left: 3rem; font-size: 1rem;" placeholder="Search services by name, department, or keyword..." data-i18n-placeholder="service_search_placeholder">
+          <span style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 1.25rem;">🔍</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;" id="categoryFilterButtons">
+          <button class="btn btn-secondary btn-sm active" data-category="all" data-i18n="category_all">All Departments</button>
+          <button class="btn btn-secondary btn-sm" data-category="health" data-i18n="category_health">Health & Sanitation</button>
+          <button class="btn btn-secondary btn-sm" data-category="agriculture" data-i18n="category_agriculture">Agriculture & Kisan</button>
+          <button class="btn btn-secondary btn-sm" data-category="utilities" data-i18n="category_utilities">Water & Electricity</button>
+          <button class="btn btn-secondary btn-sm" data-category="documents" data-i18n="category_documents">Certificates & Revenue</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid Container -->
+  <main id="main-content" class="section">
+    <div class="container">
+      <div id="servicesGridContainer" class="services-grid">
+        <!-- Rendered by js/services.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="noServicesFound" style="display: none; text-align: center; padding: 4rem 1rem;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🌾</div>
+        <h3>No services found matching your search.</h3>
+        <p>Try searching for keywords like "water", "health", "seed", or "certificate".</p>
+        <button id="resetServiceSearchBtn" class="btn btn-secondary btn-sm" style="margin-top: 1rem;">Reset Search</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Service Details Modal -->
+  <div class="modal-overlay" id="serviceDetailsModal" role="dialog" aria-modal="true" aria-labelledby="modalServiceTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="badge badge-progress" id="modalServiceCategory">Department</span>
+          <h3 id="modalServiceTitle" style="margin-top: 0.35rem; font-size: 1.35rem;">Service Title</h3>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="closeServiceModalBtn" aria-label="Close Modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="margin-bottom: 1.25rem;">
+          <h4 style="font-size: 0.95rem; color: var(--primary-800); margin-bottom: 0.25rem;">Description</h4>
+          <p id="modalServiceDesc" style="font-size: 0.925rem; line-height: 1.6;"></p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; background: var(--surface-subtle); padding: 1rem; border-radius: var(--radius-md);">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-subtle);">Operating Hours</span>
+            <div id="modalServiceTimings" style="font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-top: 0.2rem;"></div>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-subtle);">Office Location</span>
+            <div id="modalServiceLocation" style="font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-top: 0.2rem;"></div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-subtle);">Designated Officer & Contact</span>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.35rem; background: #fff; padding: 0.75rem 1rem; border: 1px solid var(--surface-border); border-radius: var(--radius-md);">
+            <div>
+              <strong id="modalServiceOfficer" style="display: block; font-size: 0.9rem; color: var(--primary-900);">Officer Name</strong>
+              <small id="modalServiceDept" style="color: var(--text-subtle);">Department</small>
+            </div>
+            <a href="#" id="modalServicePhone" class="btn btn-secondary btn-sm" style="color: var(--primary-700);">📞 Call</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.95rem; color: var(--primary-800); margin-bottom: 0.25rem;">Required Documents / Proof</h4>
+          <p id="modalServiceRequirements" style="font-size: 0.85rem; color: var(--text-muted);"></p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" id="closeServiceModalBtn2">Close</button>
+        <a href="complaint-submit.html" id="modalServiceLodgeBtn" class="btn btn-primary btn-sm">
+          ✍️ Lodge Grievance for this Dept
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Gramlink 360 • Smart Village Services Platform</div>
+        <div>Gram Panchayat Shivrajpur • Demo Mode</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/services.js"></script>
+</body>
+</html>

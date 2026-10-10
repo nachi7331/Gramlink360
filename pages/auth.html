@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident & Official Portal Login | Gramlink 360</title>
+  <meta name="description" content="Secure portal login for residents and Gram Panchayat Shivrajpur administration. Role-based access prepared for Supabase Auth.">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body style="background: radial-gradient(circle at 10% 20%, rgba(216, 243, 229, 0.5) 0%, transparent 40%), var(--surface-ground);">
+  <!-- WCAG AA Accessible Skip Navigation Link -->
+  <a href="#main-content" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
+
+  <!-- Top Emergency Strip -->
+  <div class="top-notice-strip">
+    <div class="container">
+      <div class="emergency-pills">
+        <span style="font-weight: 700; color: #fff;">Emergency Helplines:</span>
+        <a href="tel:108" class="emergency-pill">🚑 108</a>
+        <a href="tel:1091" class="emergency-pill">🛡️ 1091</a>
+        <a href="tel:1551" class="emergency-pill">🌾 1551</a>
+        <a href="tel:112" class="emergency-pill">👮 112</a>
+      </div>
+      <div class="lang-switch-wrapper">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="mr">मराठी</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Gramlink<span>360</span></h1>
+          <small>ग्रामपंचायत शिवराजपूर • Smart Village Portal</small>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="village-dashboard.html" class="nav-link" data-i18n="nav_village_pulse">Village Pulse</a></li>
+          <li><a href="services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+          <li><a href="complaint-submit.html" class="nav-link" data-i18n="nav_submit">File Complaint</a></li>
+          <li><a href="complaint-track.html" class="nav-link" data-i18n="nav_track">Track Status</a></li>
+          <li><a href="announcements.html" class="nav-link" data-i18n="nav_announcements">Announcements</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html" class="btn btn-secondary btn-sm">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Auth Main Container -->
+  <main id="main-content" class="section" style="padding: 3.5rem 0;">
+    <div class="container" style="max-width: 520px;">
+      
+      <!-- Card -->
+      <div class="hero-main-card" style="padding: 2.25rem;">
+        
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--primary-100); color: var(--primary-800); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem auto;">
+            🔒
+          </div>
+          <h2 style="font-size: 1.6rem; margin-bottom: 0.35rem;">Portal Sign In</h2>
+          <p style="font-size: 0.885rem; color: var(--text-muted); margin: 0;">
+            Access personalized village services or administrative desks.
+          </p>
+        </div>
+
+        <!-- Role Selector Segmented Control -->
+        <div style="display: flex; background: var(--surface-subtle); padding: 0.35rem; border-radius: var(--radius-md); margin-bottom: 1.75rem; border: 1px solid var(--surface-border);">
+          <button type="button" class="btn btn-sm role-toggle-btn active" data-role="citizen" style="flex: 1; border-radius: var(--radius-sm);">
+            👤 Resident (ग्रामस्थ)
+          </button>
+          <button type="button" class="btn btn-sm role-toggle-btn" data-role="admin" style="flex: 1; border-radius: var(--radius-sm);">
+            🏛️ Panchayat Admin
+          </button>
+        </div>
+
+        <!-- Mode Toggle (Login vs Register) -->
+        <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--surface-subtle); padding-bottom: 0.75rem;">
+          <button type="button" id="tabLoginBtn" style="font-weight: 700; color: var(--primary-700); border-bottom: 2px solid var(--primary-700); padding-bottom: 0.4rem; cursor: pointer;">
+            Sign In
+          </button>
+          <button type="button" id="tabRegisterBtn" style="font-weight: 600; color: var(--text-subtle); padding-bottom: 0.4rem; cursor: pointer;">
+            New Registration
+          </button>
+        </div>
+
+        <!-- Quick 1-Click Test Credentials Box -->
+        <div style="background: #fffcee; border: 1px solid var(--gold-400); padding: 0.85rem 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; font-size: 0.825rem;">
+          <strong style="color: var(--gold-700); display: block; margin-bottom: 0.35rem;">⚡ 1-Click Evaluation Shortcuts:</strong>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" id="quickResidentLoginBtn" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">
+              Fill Resident (Ramesh)
+            </button>
+            <button type="button" id="quickAdminLoginBtn" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.3rem 0.6rem;">
+              Fill Admin (Sarpanch)
+            </button>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="authForm" novalidate>
+          
+          <!-- Name (only shown during Registration) -->
+          <div class="form-group" id="regNameGroup" style="display: none;">
+            <label for="authFullName" class="form-label">Full Name <span class="required">*</span></label>
+            <input type="text" id="authFullName" class="form-control" placeholder="e.g. Ramesh Patil">
+          </div>
+
+          <!-- Phone / Ward (only shown during Registration) -->
+          <div class="form-group" id="regWardGroup" style="display: none;">
+            <label for="authWardSelect" class="form-label">Ward / Locality <span class="required">*</span></label>
+            <select id="authWardSelect" class="form-control">
+              <option value="Ward 1 - Ambedkar Nagar">Ward 1 - Dr. Ambedkar Nagar</option>
+              <option value="Ward 2 - Shivaji Chowk" selected>Ward 2 - Shivaji Chowk</option>
+              <option value="Ward 3 - Mandir Galli">Ward 3 - Mandir Galli</option>
+              <option value="Ward 4 - Kisan Vasti">Ward 4 - Kisan Vasti</option>
+              <option value="Ward 5 - Subhash Nagar">Ward 5 - Subhash Nagar</option>
+            </select>
+          </div>
+
+          <!-- Email or Phone -->
+          <div class="form-group">
+            <label for="authEmail" class="form-label">Mobile Number or Email <span class="required">*</span></label>
+            <input type="text" id="authEmail" class="form-control" placeholder="9822154321 or ramesh@shivrajpur.in" required>
+            <div class="form-error">Please enter a valid email or 10-digit mobile number.</div>
+          </div>
+
+          <!-- Password with Show/Hide toggle -->
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+              <label for="authPassword" class="form-label" style="margin-bottom: 0;">Password <span class="required">*</span></label>
+              <button type="button" id="togglePasswordBtn" style="font-size: 0.75rem; color: var(--primary-700); cursor: pointer; background: none; border: none;">
+                👁️ Show Password
+              </button>
+            </div>
+            <input type="password" id="authPassword" class="form-control" placeholder="••••••••" required>
+            <div class="form-error">Password must be at least 6 characters long.</div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="authSubmitBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.85rem;">
+            Sign In to Resident Portal
+          </button>
+        </form>
+
+        <!-- Academic / Backend Note -->
+        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid var(--surface-subtle); padding-top: 1rem;">
+          <small style="color: var(--text-subtle); font-size: 0.75rem; display: block; line-height: 1.5;">
+            🛡️ <strong>Supabase Auth Architecture Ready:</strong> In Phase 2, this triggers <code>supabase.auth.signInWithPassword()</code> and checks Row Level Security (RLS) role in <code>profiles</code> table.
+          </small>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Gramlink 360 • Smart Village Services Platform</div>
+        <div>Gram Panchayat Shivrajpur • Demo Mode</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

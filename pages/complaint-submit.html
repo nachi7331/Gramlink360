@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lodge a Village Grievance | Gramlink 360</title>
+  <meta name="description" content="Submit a formal public grievance to Gram Panchayat Shivrajpur. Fast 48-hour SLA resolution with photo verification.">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <!-- WCAG AA Accessible Skip Navigation Link -->
+  <a href="#main-content" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
+
+  <!-- Top Emergency Strip -->
+  <div class="top-notice-strip">
+    <div class="container">
+      <div class="emergency-pills">
+        <span style="font-weight: 700; color: #fff;">Emergency Helplines:</span>
+        <a href="tel:108" class="emergency-pill">🚑 108</a>
+        <a href="tel:1091" class="emergency-pill">🛡️ 1091</a>
+        <a href="tel:1551" class="emergency-pill">🌾 1551</a>
+        <a href="tel:112" class="emergency-pill">👮 112</a>
+      </div>
+      <div class="lang-switch-wrapper">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="mr">मराठी</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Gramlink<span>360</span></h1>
+          <small>ग्रामपंचायत शिवराजपूर • Smart Village Portal</small>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="village-dashboard.html" class="nav-link" data-i18n="nav_village_pulse">Village Pulse</a></li>
+          <li><a href="services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+          <li><a href="complaint-submit.html" class="nav-link active" data-i18n="nav_submit">File Complaint</a></li>
+          <li><a href="complaint-track.html" class="nav-link" data-i18n="nav_track">Track Status</a></li>
+          <li><a href="announcements.html" class="nav-link" data-i18n="nav_announcements">Announcements</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="nav-auth-slot">
+          <a href="auth.html" class="btn btn-primary btn-sm" data-i18n="nav_login">Login / Register</a>
+        </div>
+        <button class="mobile-toggle-btn" aria-label="Open Mobile Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <h2 style="font-size: 1.25rem;">Gramlink<span>360</span></h2>
+          <small>Smart Village Services</small>
+        </div>
+        <button class="mobile-drawer-close btn btn-secondary btn-sm">✕</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="../index.html" class="mobile-nav-link">🏠 Home</a></li>
+        <li><a href="village-dashboard.html" class="mobile-nav-link">📊 Village Pulse</a></li>
+        <li><a href="services.html" class="mobile-nav-link">🏛️ Village Services</a></li>
+        <li><a href="complaint-submit.html" class="mobile-nav-link active">✍️ File Complaint</a></li>
+        <li><a href="complaint-track.html" class="mobile-nav-link">🔍 Track Status</a></li>
+        <li><a href="announcements.html" class="mobile-nav-link">📢 Announcements</a></li>
+        <li style="margin-top: 1rem; border-top: 1px solid var(--surface-subtle); padding-top: 1rem;">
+          <a href="resident-dashboard.html" class="mobile-nav-link">👤 Resident Portal</a>
+        </li>
+        <li><a href="admin-dashboard.html" class="mobile-nav-link">⚙️ Admin Control Room</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <section style="background: var(--surface-ground); padding: 3rem 0 2rem 0; border-bottom: 1px solid var(--surface-border);">
+    <div class="container" style="max-width: 860px;">
+      <span class="section-tag" data-i18n="nav_submit">Citizen Grievance Redressal</span>
+      <h1 data-i18n="complaint_form_title">Lodge a Village Grievance</h1>
+      <p class="text-lead" style="margin: 0;" data-i18n="complaint_form_desc">
+        Transparent, tracked, and bound by official Panchayat turnaround time with real-time status updates.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <main id="main-content" class="section">
+    <div class="container" style="max-width: 860px;">
+      <div class="hero-main-card" style="padding: 2.5rem;">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--surface-subtle);">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.5rem;">📝</span>
+            <div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.15rem;">Formal Complaint Submission</h3>
+              <p style="font-size: 0.8rem; margin: 0;">Fill in the details below. All fields marked with <span style="color: #dc2626;">*</span> are mandatory.</p>
+            </div>
+          </div>
+          <span class="badge badge-demo">Prepared for Supabase</span>
+        </div>
+
+        <form id="grievanceSubmissionForm" novalidate>
+          <!-- Grid: Category & Ward -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="form-row-responsive">
+            <div class="form-group">
+              <label for="complaintCategory" class="form-label">
+                Department / Category <span class="required">*</span>
+              </label>
+              <select id="complaintCategory" class="form-control" required>
+                <option value="">-- Choose Department --</option>
+                <option value="utilities">Drinking Water Supply (जल पुरवठा)</option>
+                <option value="electricity">Electricity & Streetlights (वीज व पथदिवे)</option>
+                <option value="roads">Roads & Drainage (रस्ते व गटारे)</option>
+                <option value="sanitation">Sanitation & Garbage (स्वच्छता व कचरा)</option>
+                <option value="health">Primary Health Centre (आरोग्य)</option>
+                <option value="ration">Fair Price Ration PDS (रेशन दुकान)</option>
+                <option value="general">General Panchayat Service (सामान्य)</option>
+              </select>
+              <div class="form-error">Please select a valid department.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="complaintWard" class="form-label">
+                Ward / Locality <span class="required">*</span>
+              </label>
+              <select id="complaintWard" class="form-control" required>
+                <option value="">-- Choose Ward --</option>
+                <option value="Ward 1 - Ambedkar Nagar">Ward 1 - Dr. Ambedkar Nagar</option>
+                <option value="Ward 2 - Shivaji Chowk">Ward 2 - Shivaji Chowk</option>
+                <option value="Ward 3 - Mandir Galli">Ward 3 - Mandir Galli</option>
+                <option value="Ward 4 - Kisan Vasti">Ward 4 - Kisan Vasti & Mala</option>
+                <option value="Ward 5 - Subhash Nagar">Ward 5 - Subhash Nagar</option>
+              </select>
+              <div class="form-error">Please select your ward.</div>
+            </div>
+          </div>
+
+          <!-- Subject Title -->
+          <div class="form-group">
+            <label for="complaintTitle" class="form-label">
+              Brief Subject of Issue <span class="required">*</span>
+            </label>
+            <input type="text" id="complaintTitle" class="form-control" placeholder="e.g. Broken Handpump Handle near Primary School" minlength="6" required>
+            <div class="form-hint">Summarize the issue in 5 to 10 words.</div>
+            <div class="form-error">Subject must be at least 6 characters long.</div>
+          </div>
+
+          <!-- Detailed Description -->
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+              <label for="complaintDesc" class="form-label" style="margin-bottom: 0;">
+                Detailed Description <span class="required">*</span>
+              </label>
+              <span id="charCountDisplay" style="font-size: 0.75rem; color: var(--text-subtle);">0 / 500</span>
+            </div>
+            <textarea id="complaintDesc" class="form-control" rows="4" maxlength="500" placeholder="Describe what is broken, exactly where it is located, and how long it has been an issue..." required></textarea>
+            <div class="form-error">Please provide a descriptive explanation (minimum 15 characters).</div>
+          </div>
+
+          <!-- Grid: Priority & Geolocation simulation -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="form-row-responsive">
+            <div class="form-group">
+              <label for="complaintPriority" class="form-label">
+                Priority / Severity <span class="required">*</span>
+              </label>
+              <select id="complaintPriority" class="form-control" required>
+                <option value="Medium">Medium (Regular Maintenance)</option>
+                <option value="High">High (Impacting 20+ Households)</option>
+                <option value="Urgent">Emergency / Urgent (Immediate Hazard)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Location Coordinate Tag</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="complaintGeoInput" class="form-control" placeholder="18.1528° N, 74.5770° E (Shivrajpur)" readonly>
+                <button type="button" id="detectGpsBtn" class="btn btn-secondary btn-sm" title="Auto-detect GPS">
+                  📍 Detect
+                </button>
+              </div>
+              <div class="form-hint">HTML5 Geolocation coordinate simulation.</div>
+            </div>
+          </div>
+
+          <!-- Applicant Details -->
+          <div style="background: var(--surface-subtle); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; margin-bottom: 1rem; color: var(--primary-900);">Applicant Contact Details</h4>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="form-row-responsive">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="applicantName" class="form-label">
+                  Your Full Name <span class="required">*</span>
+                </label>
+                <input type="text" id="applicantName" class="form-control" placeholder="e.g. Ramesh Patil" required>
+                <div class="form-error">Please enter your full name.</div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="applicantPhone" class="form-label">
+                  10-Digit Mobile Number <span class="required">*</span>
+                </label>
+                <input type="tel" id="applicantPhone" class="form-control" placeholder="9822154321" pattern="[0-9]{10}" maxlength="10" required>
+                <div class="form-error">Please enter a valid 10-digit mobile number.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo Proof Upload Preview -->
+          <div class="form-group">
+            <label class="form-label">Photo Proof of Issue (Optional but Recommended)</label>
+            <div style="border: 2px dashed var(--surface-border); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; background: #fff;">
+              <input type="file" id="complaintPhotoFile" accept="image/*" style="display: none;">
+              <label for="complaintPhotoFile" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary-700); font-weight: 600;">
+                <span>📷</span> Click to choose or snap photo
+              </label>
+              <div id="photoPreviewContainer" style="display: none; margin-top: 1rem; align-items: center; justify-content: center; gap: 1rem;">
+                <img id="photoPreviewImg" src="" alt="Proof Preview" style="width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--surface-border);">
+                <div style="text-align: left;">
+                  <span id="photoPreviewName" style="font-size: 0.85rem; font-weight: 600; display: block;">photo.jpg</span>
+                  <button type="button" id="removePhotoBtn" style="color: #dc2626; font-size: 0.8rem; background: none; border: none; cursor: pointer;">Remove photo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Buttons -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <a href="../index.html" class="btn btn-secondary">← Cancel</a>
+            <button type="submit" id="submitGrievanceBtn" class="btn btn-primary btn-lg">
+              🚀 Submit Grievance to Panchayat
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Confirmation Modal -->
+  <div class="modal-overlay" id="submissionSuccessModal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-body" style="text-align: center; padding: 2.5rem 2rem;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+          ✓
+        </div>
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Grievance Lodged Successfully!</h3>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.75rem;">
+          Your complaint has been formally queued with Gram Panchayat Shivrajpur. An official field officer has been notified.
+        </p>
+
+        <!-- Token Box -->
+        <div style="background: var(--surface-subtle); border: 1.5px dashed var(--gold-500); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+          <small style="text-transform: uppercase; font-weight: 700; color: var(--text-subtle); display: block; margin-bottom: 0.35rem;">
+            Your Unique Grievance Reference Token
+          </small>
+          <div style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: var(--primary-900); letter-spacing: 0.05em;" id="generatedTokenDisplay">
+            GL-2026-XXXX
+          </div>
+          <button id="copyTokenBtn" class="btn btn-secondary btn-sm" style="margin-top: 0.5rem;">
+            📋 Copy Token
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.85rem; color: var(--primary-800); font-weight: 600; margin-bottom: 2rem;">
+          <span>⏱️</span> Official SLA Turnaround: <strong>48 Hours</strong>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#" id="trackThisTokenBtn" class="btn btn-primary">
+            🔍 Track Status Now
+          </a>
+          <button id="closeSuccessModalBtn" class="btn btn-secondary">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Gramlink 360 • Smart Village Services Platform</div>
+        <div>Gram Panchayat Shivrajpur • Demo Mode</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/complaints.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Portal | Gramlink 360</title>
+  <meta name="description" content="Personalized dashboard for village residents. View your submitted grievances, status timelines, and certificate requests.">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <!-- WCAG AA Accessible Skip Navigation Link -->
+  <a href="#main-content" class="skip-link" data-i18n="skip_to_main">Skip to main content</a>
+
+  <!-- Top Emergency Strip -->
+  <div class="top-notice-strip">
+    <div class="container">
+      <div class="emergency-pills">
+        <span style="font-weight: 700; color: #fff;">Emergency Helplines:</span>
+        <a href="tel:108" class="emergency-pill">🚑 108</a>
+        <a href="tel:1091" class="emergency-pill">🛡️ 1091</a>
+        <a href="tel:1551" class="emergency-pill">🌾 1551</a>
+        <a href="tel:112" class="emergency-pill">👮 112</a>
+      </div>
+      <div class="lang-switch-wrapper">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="mr">मराठी</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Gramlink<span>360</span></h1>
+          <small>ग्रामपंचायत शिवराजपूर • Smart Village Portal</small>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="village-dashboard.html" class="nav-link" data-i18n="nav_village_pulse">Village Pulse</a></li>
+          <li><a href="services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+          <li><a href="complaint-submit.html" class="nav-link" data-i18n="nav_submit">File Complaint</a></li>
+          <li><a href="complaint-track.html" class="nav-link" data-i18n="nav_track">Track Status</a></li>
+          <li><a href="announcements.html" class="nav-link" data-i18n="nav_announcements">Announcements</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="nav-auth-slot">
+          <!-- Main.js fills this -->
+        </div>
+        <button class="mobile-toggle-btn" aria-label="Open Mobile Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div class="brand-text">
+          <h2 style="font-size: 1.25rem;">Gramlink<span>360</span></h2>
+          <small>Smart Village Services</small>
+        </div>
+        <button class="mobile-drawer-close btn btn-secondary btn-sm">✕</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="../index.html" class="mobile-nav-link">🏠 Home</a></li>
+        <li><a href="village-dashboard.html" class="mobile-nav-link">📊 Village Pulse</a></li>
+        <li><a href="services.html" class="mobile-nav-link">🏛️ Village Services</a></li>
+        <li><a href="complaint-submit.html" class="mobile-nav-link">✍️ File Complaint</a></li>
+        <li><a href="complaint-track.html" class="mobile-nav-link">🔍 Track Status</a></li>
+        <li><a href="announcements.html" class="mobile-nav-link">📢 Announcements</a></li>
+        <li style="margin-top: 1rem; border-top: 1px solid var(--surface-subtle); padding-top: 1rem;">
+          <a href="resident-dashboard.html" class="mobile-nav-link active">👤 Resident Portal</a>
+        </li>
+        <li><a href="admin-dashboard.html" class="mobile-nav-link">⚙️ Admin Control Room</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Resident Banner & Profile Header -->
+  <section style="background: radial-gradient(circle at 10% 20%, rgba(216, 243, 229, 0.4) 0%, transparent 40%), var(--surface-ground); padding: 3rem 0 2rem 0; border-bottom: 1px solid var(--surface-border);">
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 1.25rem;">
+          <div style="width: 68px; height: 68px; border-radius: 50%; background: var(--primary-800); color: #fff; font-size: 2rem; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+            👤
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <h1 style="font-size: 1.6rem; margin: 0;" id="residentWelcomeName">Ramesh Patil</h1>
+              <span class="badge badge-resolved">Verified Resident</span>
+            </div>
+            <p style="font-size: 0.885rem; color: var(--text-muted); margin: 0;">
+              Gram Panchayat Shivrajpur • <span id="residentWardBadge">Ward 2 - Shivaji Chowk</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="complaint-submit.html" class="btn btn-primary">
+            ✍️ Lodge New Grievance
+          </a>
+          <button id="residentLogoutBtn" class="btn btn-secondary">
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resident Dashboard Main -->
+  <main id="main-content" class="section">
+    <div class="container">
+      
+      <!-- Metrics Strip (Real Database Analytics) -->
+      <div class="pulse-stats-grid" style="margin-bottom: 2.5rem;">
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label">Total Filed</span>
+            <span class="pulse-icon">📋</span>
+          </div>
+          <div class="pulse-number" id="residentTotalCount">0</div>
+          <p class="pulse-subtext">All-time village grievances</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label">Active / In Progress</span>
+            <span class="pulse-icon">⏳</span>
+          </div>
+          <div class="pulse-number" style="color: var(--status-progress-text);" id="residentActiveCount">0</div>
+          <p class="pulse-subtext">Currently assigned to field officers</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label">Resolved</span>
+            <span class="pulse-icon">✅</span>
+          </div>
+          <div class="pulse-number" style="color: #16a34a;" id="residentResolvedCount">0</div>
+          <p class="pulse-subtext">Completed & closed</p>
+        </div>
+
+        <div class="pulse-card">
+          <div class="pulse-header">
+            <span class="pulse-label">Resolution Rate</span>
+            <span class="pulse-icon">📈</span>
+          </div>
+          <div class="pulse-number" style="font-size: 1.85rem; color: var(--gold-700);" id="residentResolutionRate">0%</div>
+          <p class="pulse-subtext">Resolved percentage</p>
+        </div>
+      </div>
+
+      <!-- Grievances History Section with Search & Category Filters -->
+      <div style="margin-bottom: 3rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+          <div>
+            <h3>Your Lodged Village Grievances</h3>
+            <p style="font-size: 0.85rem; margin: 0; color: var(--text-muted);">Track the progress, audit status history, and SLA guarantees of your filed issues.</p>
+          </div>
+          <span class="badge badge-demo">Supabase Row Level Security</span>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="filter-bar-grid">
+          <div style="flex: 1; min-width: 240px;">
+            <input type="text" id="residentSearchInput" class="form-control" placeholder="Search by token, title or category..." data-i18n-placeholder="search_complaints_placeholder" style="font-size: 0.875rem;">
+          </div>
+          <div>
+            <select id="residentStatusFilter" class="form-control" style="font-size: 0.85rem; padding: 0.55rem 0.75rem;">
+              <option value="all" data-i18n="filter_all_status">All Statuses</option>
+              <option value="Pending" data-i18n="filter_status_pending">⏳ Pending Only</option>
+              <option value="In Progress" data-i18n="filter_status_progress">🔧 In Progress Only</option>
+              <option value="Resolved" data-i18n="filter_status_resolved">✅ Resolved Only</option>
+            </select>
+          </div>
+          <div>
+            <select id="residentCategoryFilter" class="form-control" style="font-size: 0.85rem; padding: 0.55rem 0.75rem;">
+              <option value="all" data-i18n="filter_all_categories">All Categories</option>
+              <option value="utilities" data-i18n="filter_cat_water">Drinking Water</option>
+              <option value="electricity" data-i18n="filter_cat_power">Electricity</option>
+              <option value="roads" data-i18n="filter_cat_roads">Roads & Drainage</option>
+              <option value="sanitation" data-i18n="filter_cat_sanitation">Sanitation</option>
+              <option value="health" data-i18n="filter_cat_health">Health PHC</option>
+              <option value="ration" data-i18n="filter_cat_ration">Ration PDS</option>
+              <option value="general" data-i18n="filter_cat_general">General</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Desktop Table View -->
+        <div class="desktop-table-view data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Reference Token</th>
+                <th>Subject & Category</th>
+                <th>Ward Location</th>
+                <th>Current Status</th>
+                <th>Filed On</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="residentComplaintsTableBody">
+              <!-- Rendered by js/resident.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Card View (Optimized for Small Screens) -->
+        <div class="mobile-card-list" id="residentComplaintsCardList">
+          <!-- Rendered by js/resident.js -->
+        </div>
+      </div>
+
+      <!-- Useful Resident Services Shortcuts -->
+      <div>
+        <h3 style="margin-bottom: 1.25rem;">Quick Welfare Services & Certificates</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+          
+          <div class="pulse-card">
+            <span style="font-size: 1.75rem;">📜</span>
+            <h4 style="font-size: 1.05rem; margin: 0.5rem 0 0.25rem 0;">Pramaan Patra Desk</h4>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">Apply for Birth, Death, or Residence Certificates from Gram Sevak.</p>
+            <a href="services.html" class="btn btn-secondary btn-sm">Apply via Services →</a>
+          </div>
+
+          <div class="pulse-card">
+            <span style="font-size: 1.75rem;">🌾</span>
+            <h4 style="font-size: 1.05rem; margin: 0.5rem 0 0.25rem 0;">Kisan Welfare & PM-Kisan</h4>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">Verify e-KYC status and check Kharif seed subsidy quotas.</p>
+            <a href="services.html" class="btn btn-secondary btn-sm">Kisan Kendra Details →</a>
+          </div>
+
+          <div class="pulse-card">
+            <span style="font-size: 1.75rem;">💧</span>
+            <h4 style="font-size: 1.05rem; margin: 0.5rem 0 0.25rem 0;">Water Supply Timing Desk</h4>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">Check morning and evening overhead tank supply timetable.</p>
+            <a href="village-dashboard.html" class="btn btn-secondary btn-sm">View Timings →</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Gramlink 360 • Smart Village Services Platform</div>
+        <div>Gram Panchayat Shivrajpur • Demo Mode</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/state.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/resident.js"></script>
+</body>
+</html>
